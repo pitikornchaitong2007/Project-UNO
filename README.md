@@ -1,4 +1,4 @@
-# Project 9in1 Uno
+# Arduino
 
 **นายปิติกรณ์ ชัยทอง**
 
