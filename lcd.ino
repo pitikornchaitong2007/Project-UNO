@@ -1,20 +1,29 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-// กำหนด address ของจอ (ส่วนมากจะเป็น 0x27 หรือ 0x3F)
+// ประกาศ lcd ไว้ตรงนี้ ต้องอยู่นอก setup/loop
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void setup() {
-  lcd.init();          // เริ่มต้น LCD
-  lcd.backlight();     // เปิดไฟ backlight
+  lcd.init();        // เริ่มต้นจอ
+  lcd.backlight();   // เปิดไฟพื้นหลัง
 
-  lcd.setCursor(0, 0); // คอลัมน์ 0 แถว 0
-  lcd.print("Hello World");
+  lcd.setCursor(0, 0);
+  lcd.print("LCD TEST OK");
 
-  lcd.setCursor(0, 1); // คอลัมน์ 0 แถว 1
-  lcd.print("I2C LCD 16x2");
+  lcd.setCursor(0, 1);
+  lcd.print("I2C 16x2");
 }
 
 void loop() {
-  // ไม่ต้องใส่อะไร
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Running...");
+
+  static int count = 0;
+  lcd.setCursor(0, 1);
+  lcd.print("Count: ");
+  lcd.print(count++);
+
+  delay(1000);
 }
